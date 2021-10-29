@@ -1,25 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Text.RegularExpressions;
 
 namespace DataStructures
 {
-    class DataStructure
+    class DataStructure<Gtype>
     {
-        public void Anagrams()
+        public void Prime()
         {
-            string str1 = "heart";
-            string str2 = "earth";
-            char[] ch1 = str1.ToLower().ToCharArray();
-            char[] ch2 = str2.ToLower().ToCharArray();
-            Array.Sort(ch1);
-            Array.Sort(ch2);
-            string first = new string(ch1);
-            string second = new string(ch2);
-            if (first == second)
-                Console.WriteLine("Strings are Anagrams");
-            else
-                Console.WriteLine("Strings are not Anagrams");
+            List<int> primes = new List<int>();
+            int count = 0;
+            for (int i = 0; i <= 1000; i++)
+            {
+                int flag = 0;
+                for (int j = 2; j <= i / 2; ++j)
+                {
+                    if (i % j == 0)
+                    {
+                        flag = 1;
+                        break;
+                    }
+                }
+                if (flag == 0)
+                {
+                    primes.Add(i);
+                    count++;
+                }
+            }
+            foreach (int i in primes)
+            {
+                Console.Write($"{i}, ");
+            }
         }
     }
 }
